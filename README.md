@@ -25,9 +25,9 @@ Ubuntu
  
  1- Install version 12.3 postgresql on Ubuntu using: https://www.postgresql.org/docs/9.0/tutorial-install.html
   * In case you get the error `createdb: could not connect to database template1: FATAL:  Peer authentication failed for user "postgres"`,  
-     ** run `sudo nano /etc/postgresql/10/main/pg_hba.conf` and 
-     ** replace `local   all             postgres                                peer` by `local   all             postgres                                trust`
-     ** `sudo /etc/init.d/postgresql reload 
+     * run `sudo nano /etc/postgresql/10/main/pg_hba.conf` and 
+     * replace `local   all             postgres                                peer` by `local   all             postgres                                trust`
+     * `sudo /etc/init.d/postgresql reload 
 
 
 ## Writeup on design choices

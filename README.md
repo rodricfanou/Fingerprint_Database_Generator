@@ -4,14 +4,14 @@ The MITMEngine project (https://github.com/cloudflare/mitmengine) detects HTTPS 
 
 ## Steps
 
-####MacOS
+#### MacOS
 
 1- Install version 12.3 postgresql on Mac using: https://www.robinwieruch.de/postgres-sql-macos-setup;  you can run "brew install postgresql"
 
 2- Create postgresql database with a table listing the http fingerprints, a table listing the tls fingerprints and a third table storing the matching of their respective ids (run script ). 
  
   
-####Ubuntu
+#### Ubuntu
  
 1- Install version 12.3 postgresql on Ubuntu using: https://www.postgresql.org/docs/9.0/tutorial-install.html
   * In case you get the error `createdb: could not connect to database template1: FATAL:  Peer authentication failed for user "postgres"`,  

@@ -1,0 +1,138 @@
+2020-06-30 22:01:14.268 PDT [14531] LOG:  starting PostgreSQL 12.3 on x86_64-apple-darwin18.7.0, compiled by Apple clang version 11.0.0 (clang-1100.0.33.17), 64-bit
+2020-06-30 22:01:14.271 PDT [14531] LOG:  listening on IPv6 address "::1", port 5432
+2020-06-30 22:01:14.271 PDT [14531] LOG:  listening on IPv6 address "fe80::1%lo0", port 5432
+2020-06-30 22:01:14.271 PDT [14531] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2020-06-30 22:01:14.271 PDT [14531] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2020-06-30 22:01:14.283 PDT [14532] LOG:  database system was shut down at 2020-06-30 22:01:03 PDT
+2020-06-30 22:01:14.286 PDT [14531] LOG:  database system is ready to accept connections
+2020-06-30 22:01:42.024 PDT [14552] FATAL:  database "Roderick" does not exist
+2020-06-30 22:02:13.562 PDT [14556] FATAL:  database "Roderick" does not exist
+2020-06-30 22:02:19.365 PDT [14560] ERROR:  database "browsersfgp" already exists
+2020-06-30 22:02:19.365 PDT [14560] STATEMENT:  CREATE DATABASE browsersfgp;
+2020-06-30 22:02:45.154 PDT [14570] FATAL:  database "Roderick" does not exist
+2020-06-30 22:04:19.405 PDT [14575] ERROR:  database "browserfgp" does not exist
+2020-06-30 22:04:19.405 PDT [14575] STATEMENT:  DROP DATABASE browserfgp;
+2020-06-30 22:04:48.469 PDT [14580] FATAL:  database "browserfgp" does not exist
+2020-06-30 22:05:43.795 PDT [14876] FATAL:  database "browserfgp" does not exist
+2020-06-30 22:05:50.858 PDT [14880] FATAL:  database "Roderick" does not exist
+2020-06-30 22:06:32.897 PDT [14888] FATAL:  database "Roderick" does not exist
+2020-06-30 22:07:14.277 PDT [14905] LOG:  starting PostgreSQL 12.3 on x86_64-apple-darwin18.7.0, compiled by Apple clang version 11.0.0 (clang-1100.0.33.17), 64-bit
+2020-06-30 22:07:14.281 PDT [14905] LOG:  could not bind IPv6 address "::1": Address already in use
+2020-06-30 22:07:14.281 PDT [14905] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2020-06-30 22:07:14.281 PDT [14905] LOG:  could not bind IPv6 address "fe80::1%lo0": Address already in use
+2020-06-30 22:07:14.281 PDT [14905] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2020-06-30 22:07:14.281 PDT [14905] LOG:  could not bind IPv4 address "127.0.0.1": Address already in use
+2020-06-30 22:07:14.281 PDT [14905] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2020-06-30 22:07:14.281 PDT [14905] WARNING:  could not create listen socket for "localhost"
+2020-06-30 22:07:14.281 PDT [14905] FATAL:  could not create any TCP/IP sockets
+2020-06-30 22:07:14.281 PDT [14905] LOG:  database system is shut down
+2020-06-30 22:07:14.810 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:15.508 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:15.508 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:16.207 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:16.207 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:16.916 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:16.916 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:17.617 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:17.617 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:18.324 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:18.324 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:19.027 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:19.027 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:19.727 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:19.727 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:19.793 PDT [14916] LOG:  starting PostgreSQL 12.3 on x86_64-apple-darwin18.7.0, compiled by Apple clang version 11.0.0 (clang-1100.0.33.17), 64-bit
+2020-06-30 22:07:19.796 PDT [14916] LOG:  could not bind IPv6 address "::1": Address already in use
+2020-06-30 22:07:19.796 PDT [14916] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2020-06-30 22:07:19.796 PDT [14916] LOG:  could not bind IPv6 address "fe80::1%lo0": Address already in use
+2020-06-30 22:07:19.796 PDT [14916] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2020-06-30 22:07:19.796 PDT [14916] LOG:  could not bind IPv4 address "127.0.0.1": Address already in use
+2020-06-30 22:07:19.796 PDT [14916] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2020-06-30 22:07:19.796 PDT [14916] WARNING:  could not create listen socket for "localhost"
+2020-06-30 22:07:19.796 PDT [14916] FATAL:  could not create any TCP/IP sockets
+2020-06-30 22:07:19.796 PDT [14916] LOG:  database system is shut down
+2020-06-30 22:07:20.430 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:20.430 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:21.131 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:21.131 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:21.837 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:21.837 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:22.542 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:22.542 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:23.250 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:23.250 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:23.952 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:23.952 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:24.658 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:24.658 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:25.358 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:25.358 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:25.796 PDT [14536] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2020-06-30 22:07:25.796 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:25.796 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:26.491 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:26.491 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:27.183 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:27.183 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:27.880 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:27.880 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:28.572 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:28.572 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:29.265 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:29.265 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:29.960 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:29.960 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:30.661 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:30.661 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:31.360 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:31.360 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:32.062 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:32.063 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:32.759 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:32.759 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:33.450 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:33.450 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:34.137 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:34.138 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:34.824 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:34.824 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:35.528 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:35.528 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:36.218 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:36.219 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:36.643 PDT [14536] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2020-06-30 22:07:36.643 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:36.643 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:37.326 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:37.330 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:38.026 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:38.026 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:38.719 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:38.719 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:39.409 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:39.409 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:40.110 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:40.110 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:40.797 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:40.797 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:41.492 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:41.492 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:42.169 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:42.169 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:42.820 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:42.820 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:43.469 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:43.470 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:44.126 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:44.126 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:44.792 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:44.792 PDT [14537] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2020-06-30 22:07:44.845 PDT [14531] LOG:  could not open file "postmaster.pid": No such file or directory
+2020-06-30 22:07:44.845 PDT [14531] LOG:  performing immediate shutdown because data directory lock file is invalid
+2020-06-30 22:07:44.845 PDT [14531] LOG:  received immediate shutdown request
+2020-06-30 22:07:44.845 PDT [14531] LOG:  could not open file "postmaster.pid": No such file or directory
+2020-06-30 22:07:44.845 PDT [14536] WARNING:  terminating connection because of crash of another server process
+2020-06-30 22:07:44.845 PDT [14536] DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+2020-06-30 22:07:44.845 PDT [14536] HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+2020-06-30 22:07:44.845 PDT [14537] LOG:  could not open temporary statistics file "pg_stat/global.tmp": No such file or directory
+2020-06-30 22:07:44.848 PDT [14531] LOG:  database system is shut down

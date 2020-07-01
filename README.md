@@ -37,14 +37,18 @@ The MITMEngine project (https://github.com/cloudflare/mitmengine) detects HTTPS 
 * Is this the format of an HTTPS fingerprint?  
 <browser_name>:<browser_version>:<os_platform>:<os_name>:<os_version>:<device_type>:<quirks>|<tls_version>:<cipher_suites>:<extension_names>:<curves>:<ec_point_fmts>:<http_headers>:<quirks>|<mitm_name>:<mitm_type>:<mitm_grade>
 
+
 * Is this the format of a TLS fingerprint? What is the template i.e what is it composed of?
+
 - https://jhalderm.com/pub/papers/interception-ndss17.pdf
+
 - https://github.com/zakird/tlsfingerprints/blob/master/processing/browsers/browser.py#L131
+
 0::0:0::0:|:*:*:*:*:*barracuda:*|Barracuda:5:0
+
 0::0:0::0:|:*:*:*:*:*cuda_cliip:*|Barracuda:5:0
+
 0::0:0::0:|:*:*:*:*:*gdata-version:*|GData:1:4
-
-
 
 
 ## Writeup on design choices

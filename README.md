@@ -11,4 +11,9 @@ The MITMEngine project (https://github.com/cloudflare/mitmengine) detects HTTPS 
   * install behave-browserstack (https://github.com/browserstack/behave-browserstack.git) -- not sure this is compulsory
   
 4- Download mitmengine
+  * setup Go ( https://golang.org/dl/go1.14.4.linux-amd64.tar.gz) using https://golang.org/doc/install
   * install and run vendering or gomo logic using https://gocodecloud.com/blog/2016/03/29/go-vendoring-beginner-tutorial/
+
+
+
+## Writeup on design choices

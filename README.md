@@ -36,9 +36,6 @@ a- Install version 12.3 postgresql on Ubuntu using: https://www.postgresql.org/d
   * Run Browserstack in a local setting and combine with Wireshark to infer TLS header: issues while running ```paver run local```. 
   * Generate TLS fingerprints samples using https://github.com/cloudflare/mitmengine#generate-a-fingerprint-sample
   
-  
-5- 
-
 
 
 ## Writeup on design choices
@@ -129,3 +126,6 @@ We thus generated two fingerprints samples locally (On an Ubuntu machine with a 
 
 
 
+## Results
+
+![Testing the DB](images/db.png)

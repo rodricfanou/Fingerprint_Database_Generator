@@ -4,36 +4,35 @@ The MITMEngine project (https://github.com/cloudflare/mitmengine) detects HTTPS 
 
 ## Steps
 
-#### MacOS
+#### 1- On MacOS Mojave 
 
-1- Install version 12.3 postgresql on Mac using: https://www.robinwieruch.de/postgres-sql-macos-setup;  you can run "brew install postgresql"
+a- Install version 12.3 postgresql on Mac using: https://www.robinwieruch.de/postgres-sql-macos-setup;  you can run "brew install postgresql"
 
-2- Create postgresql database with a table listing the http fingerprints, a table listing the tls fingerprints and a third table storing the matching of their respective ids (run script ). 
+b- Create postgresql database with a table listing the http fingerprints, a table listing the tls fingerprints and a third table storing the matching of their respective ids (run script ). 
  
   
-#### Ubuntu
+#### 1- Ubuntu
  
-1- Install version 12.3 postgresql on Ubuntu using: https://www.postgresql.org/docs/9.0/tutorial-install.html
+a- Install version 12.3 postgresql on Ubuntu using: https://www.postgresql.org/docs/9.0/tutorial-install.html
   * In case you get the error `createdb: could not connect to database template1: FATAL:  Peer authentication failed for user "postgres"`,  
      * run `sudo nano /etc/postgresql/10/main/pg_hba.conf` and 
      * replace `local   all             postgres                                peer` by `local   all             postgres                                trust`
      * `sudo /etc/init.d/postgresql reload 
 
 
-3- Create an account on BrowserStack (a free account would be enough for this project); automate browserstack for python using https://www.browserstack.com/automate/python. 
+2- Create an account on BrowserStack (a free account would be enough for this project); automate browserstack for python using https://www.browserstack.com/automate/python. 
   * install behave-browserstack (https://github.com/browserstack/behave-browserstack.git) -- not sure this is compulsory
   
-4- Download and install mitmengine 
+3- Download and install mitmengine (Not necessary for the project) 
   * setup Go (https://golang.org/dl/go1.14.4.linux-amd64.tar.gz) using https://golang.org/doc/install
-  * install and run vendering or gomo logic using https://gocodecloud.com/blog/2016/03/29/go-vendoring-beginner-tutorial/ --not sure
+  * install and run vendering or gomo logic using https://gocodecloud.com/blog/2016/03/29/go-vendoring-beginner-tutorial/ 
   * Use Go 1.14.1 (go version go1.14.4 linux/amd64 for linux and go1.14.4 darwin/amd64 for macOS). In case you needed to uninstall Go, use https://stackoverflow.com/questions/42186003/how-to-uninstall-golang
   * set GOPATH to /home/username/go/
   * run ``make test`` and ``make cover`` in ```/home/username/go/src/github.com/cloudflare/mitmengine```
  
-5- HTTPS vs TLS signatures
+4- HTTPS vs TLS signatures
 
-* We adopted the following format as that of an HTTPS fingerprint:
-<browser_name>:<browser_version>:<os_platform>:<os_name>:<os_version>:<device_type>:<quirks>|<tls_version>:<cipher_suites>:<extension_names>:<curves>:<ec_point_fmts>:<http_headers>:<quirks>|<mitm_name>:<mitm_type>:<mitm_grade>
+
 
 * 
 
@@ -42,8 +41,17 @@ The MITMEngine project (https://github.com/cloudflare/mitmengine) detects HTTPS 
 
 ## Writeup on design choices
 
-1- By running the command,  `curl -u "username:key" https://api.browserstack.com/automate/browsers.json > browsers_infos.json`, we get a list of desired capabilities for both desktop and mobile browsers. It returns a flat hash in the format [:os, :os_version, :browser, :browser_version, :device, :real_mobile].
-We decided to use the results to build the HTTPS fingerprints of all available devices. 
+1- Design of the Postgresql database.
+
+
+
+2- By running the command,  `curl -u "username:key" https://api.browserstack.com/automate/browsers.json > browsers_infos.json`, we get a list of desired capabilities for both desktop and mobile browsers. It returns a flat hash in the format [:os, :os_version, :browser, :browser_version, :device, :real_mobile].
+We chose to use the outputs to build the HTTPS fingerprints of all available devices. We adopted the following format as that of an HTTPS fingerprint:
+
+```<browser_name>:<browser_version>:<os_platform>:<os_name>:<os_version>:<device_type>:<quirks>|<tls_version>:<cipher_suites>:<extension_names>:<curves>:<ec_point_fmts>:<http_headers>:<quirks>|<mitm_name>:<mitm_type>:<mitm_grade>```
+
+Non available informations are ommitted.
+
 
 
 

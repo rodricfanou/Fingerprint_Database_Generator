@@ -132,7 +132,9 @@ We thus generated two fingerprints samples locally (On an Ubuntu machine with a 
 
 #### 4- On using Docker Compose. 
 
-As of now the code is fully automated in python with the option to run it using the command ./docker-compose.py up browserstack-username browserstack-key```. This could be improved. To be able to run `docker-compose up` from the project directory and launch a container with the postgres database, and a container that collects fingerprints from BrowserStack (credentials can be supplied as config options) and imports them into the database as requested in the TODOs, we will need to use Docker compose (https://docs.docker.com/compose/) to create containers hosting the different parts of the project. 
+As of now the code is fully automated in python with the option to run it using the command ```./docker-compose.py up browserstack-user browserstack-key dbuser dbpass db```; eg: ```./docker-compose.py up fanouroderick1 sxuyw68wEHXq9TEPxrnH roderick newpassword browsersfgp```. 
+
+This could definitely be improved. To be able to run `docker-compose up` from the project directory and launch a container with the postgres database, and a container that collects fingerprints from BrowserStack (credentials can be supplied as config options) and imports them into the database as requested in the TODOs, we will need to use Docker compose (https://docs.docker.com/compose/) to create containers hosting the different parts of the project. 
 
 ## Results
 

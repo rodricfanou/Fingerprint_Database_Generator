@@ -6,42 +6,42 @@ The MITMEngine project (https://github.com/cloudflare/mitmengine) detects HTTPS 
 
 #### 1- On MacOS Mojave 
 
-a- Install version 12.3 postgresql on Mac using: https://www.robinwieruch.de/postgres-sql-macos-setup;  you can run "brew install postgresql"
+a- Install postgresql 12.3 on Mac using: https://www.robinwieruch.de/postgres-sql-macos-setup by running "brew install postgresql"
 
-b- Create postgresql database with a table listing the http fingerprints, a table listing the tls fingerprints and a third table storing the matching of their respective ids (run script ). 
+b- Create a postgresql database with a table listing the http fingerprints, a table listing the tls fingerprints and a third table storing the matching of their respective ids. 
  
   
 #### 1- On Ubuntu
  
-a- Install version 12.3 postgresql on Ubuntu using: https://www.postgresql.org/docs/9.0/tutorial-install.html
+a- Install postgresql 12.3 on Ubuntu using: https://www.postgresql.org/docs/9.0/tutorial-install.html
   * In case you get the error `createdb: could not connect to database template1: FATAL:  Peer authentication failed for user "postgres"`,  
-     * run `sudo nano /etc/postgresql/10/main/pg_hba.conf` and 
+     * run `sudo nano /etc/postgresql/10/main/pg_hba.conf`  
      * replace `local   all             postgres                                peer` by `local   all             postgres                                trust`
-     * `sudo /etc/init.d/postgresql reload 
+     * restart the postgresql service: `sudo /etc/init.d/postgresql reload 
 
 
-2- Create an account on BrowserStack (a free account would be enough for this project); automate browserstack for python using https://www.browserstack.com/automate/python. 
-  * install behave-browserstack (https://github.com/browserstack/behave-browserstack.git) -- not sure this is compulsory
+2- Create an account on BrowserStack (a free account); automate browserstack for python using https://www.browserstack.com/automate/python. 
+  * install and test behave-browserstack (https://github.com/browserstack/behave-browserstack.git) -- finally not necessary
   
   
-3- Download and install mitmengine (Not necessary for the project) 
+3- Download and install mitmengine (finally not necessary, but I got the template of HTTPS and TLS fingerprints from this folder) 
   * setup Go (https://golang.org/dl/go1.14.4.linux-amd64.tar.gz) using https://golang.org/doc/install
-  * install and run vendering or gomo logic using https://gocodecloud.com/blog/2016/03/29/go-vendoring-beginner-tutorial/ 
   * Use Go 1.14.1 (go version go1.14.4 linux/amd64 for linux and go1.14.4 darwin/amd64 for macOS). In case you needed to uninstall Go, use https://stackoverflow.com/questions/42186003/how-to-uninstall-golang
   * set GOPATH to /home/username/go/
-  * run ``make test`` and ``make cover`` in ```/home/username/go/src/github.com/cloudflare/mitmengine```
+  * run ``make test`` and ``make cover`` in the folder ```/home/username/go/src/github.com/cloudflare/mitmengine```
  
  
 4- Generate TLS fingerprints
-  * Run Browserstack in a local setting and combine with Wireshark to infer TLS header: issues while running ```paver run local```. 
-  * Generate TLS fingerprints samples using https://github.com/cloudflare/mitmengine#generate-a-fingerprint-sample
+  * Run Browserstack in a local setting for each browser in browserstack, while running Wireshark to infer TLS header: you may encounter issues while running ```paver run local```. 
+  * If you encounter any issue, generate TLS fingerprints samples using https://github.com/cloudflare/mitmengine#generate-a-fingerprint-sample
   
 
 
-## Writeup on design choices
+## Writeup on my design choices
 
-1- Design of the Postgresql database.
-We created 3 tables with the primary keys (PK) and informations below. Table 3 links the HTTPS fingerprints to the TLS fingerprints using their respective IDs (http_is and tls_id). 
+#### 1- Design of the Postgresql database.
+
+In the postgresql dabase, we created 3 tables with the primary keys (PK) and informations below. The first table (http_fgp) is designed to host the HTTPS fingerprints of the browsers. The second one (tls_fgp), the generated TLS fingerprints. Each of them contains an id and the said fingerprints under a string format.  Table 3 links the HTTPS fingerprints to the TLS fingerprints using their respective IDs (http_is and tls_id), each of which is a forreign key of the previous two tables. 
 
 ```
           Table 1: "http_fgp"
@@ -66,22 +66,27 @@ We created 3 tables with the primary keys (PK) and informations below. Table 3 l
  
 ```
 
-2- HTTPS fingerprints generation
+We adopted this design, because an HTTP fingerprint could match several TLS fingerprints and vice versa. 
 
-By running the command,  `curl -u "username:key" https://api.browserstack.com/automate/browsers.json > browsers_infos.json`, we get a list of desired capabilities for both desktop and mobile browsers of Browserstack. The command returns a flat hash in the format [:os, :os_version, :browser, :browser_version, :device, :real_mobile]. We chose to use the outputs to build the HTTPS fingerprints of all available devices. We adopted the following format for HTTPS fingerprints; non available informations are ommitted. As a consequence, our HTTPS fingerprints are basically composed of the uaFingerprints.
+For an improved version of this project, HTTPS and TLS fingerprints these could be stored under json strings formats containing key and values. We could also add to the table cross_fgp a timestamp/datetime so that we know when the matching occured.  
+
+
+#### 2- HTTPS fingerprints generation
+
+By running the command,  `curl -u "username:key" https://api.browserstack.com/automate/browsers.json > browsers_infos.json`, we can get a list of desired capabilities for both desktop and mobile browsers available on Browserstack. The command returns a flat hash in the format [:os, :os_version, :browser, :browser_version, :device, :real_mobile]. We chose to use the outputs to build the HTTPS fingerprints of all available devices. We adopted the following format for HTTPS fingerprints; non available informations are ommitted. As a consequence, our HTTPS fingerprints are basically composed of the uaFingerprints.
 
 ```<browser_name>:<browser_version>:<os_platform>:<os_name>:<os_version>:<device_type>:<quirks>|<tls_version>:<cipher_suites>:<extension_names>:<curves>:<ec_point_fmts>:<http_headers>:<quirks>|<mitm_name>:<mitm_type>:<mitm_grade>```
 
 We stored 1,864 entries in Table 1.
 
 
-3- TLS fingerprints generation
+#### 3- TLS fingerprints generation
 
-As for the TLS request fingerprint string, we adopted the following format (see MITMEngine Github):
+As for the TLS request fingerprint strings, we adopted the following format (see MITMEngine Github - https://github.com/cloudflare/mitmengine):
 
 ```<tls_version>:<cipher_suites>:<extension_names>:<curves>:<ec_point_fmts>:<http_headers>:<quirks>```
 
-We planned to use the selenium and network logs from browserstack to build the TLS fingerprints corresponding to each of the 1,864 browsers' HTTPS fingerprints. But none of the fields above were found in those files. The second option was to run browserstack in local testing mode, while launching traffic capture with wireshark. Trying that method led to the following: 
+We planned to use the selenium and network logs from browserstack to build the TLS fingerprints corresponding to each of the 1,864 browsers' HTTPS fingerprints. But none of the fields above were found in those files. The second option was to run browserstack in local testing mode, while launching traffic capture with wireshark. Trying that method led to the following output: 
 
 ```
 ./BrowserStackLocal --key sxuyw68wEHXq9TEPxrnH --force-local
@@ -98,7 +103,7 @@ Thu Jul 02 2020 13:01:52 GMT-0700 (PDT) -- [SUCCESS] You can now access your loc
 Thu Jul 02 2020 13:01:52 GMT-0700 (PDT) -- Press Ctrl-C to exit
 ```
 
-And we obtained the following error:
+And to the following error:
 
 ```
 ~/go/src/github.com/cloudflare/behave-browserstack$ paver run local
@@ -122,9 +127,14 @@ CONFIG_FILE=config/local.json TASK_ID=0 behave features/local.feature
 Build failed running pavement.run: Subprocess return code: 1
 ```
 
-We thus generated two fingerprints samples locally (On an Ubuntu machine with a firefox browser and a MacOS Mojave with a safari browser) using the commands listed at: https://github.com/cloudflare/mitmengine#generate-a-fingerprint-sample. Assuming that having most of the fields in the UAfingerprints which are identical means that the HTTPS fingerprint corresponds to the cosidered TLS fingerprint, we looked for the closest match between the existing HTTPS fingerprints and each of the generated TLS fingerprints and stored ther respective ids in Table 3 (cross_fgp) only if we find such a match. 
+We thus generated two fingerprints samples locally (On an Ubuntu machine with a firefox browser and a MacOS Mojave with a safari browser) using the commands listed at: https://github.com/cloudflare/mitmengine#generate-a-fingerprint-sample. Assuming that having most of the fields in the UAfingerprints identical means that the HTTPS fingerprint corresponds to the cosidered TLS fingerprint, we looked for the closest match between the existing HTTPS fingerprints and each of the generated TLS fingerprints. We then stored their respective ids in Table 3 (cross_fgp) only if we find such a match. The current status of the database id presented in the next section. 
 
 
+#### 4- On using Docker Compose. 
+
+As of now the code is fully automated in python with the option to run it using the command ```./docker-compose.py up browserstack-user browserstack-key dbuser dbpass db```; eg: ```./docker-compose.py up fanouroderick1 sxuyw68wEHXq9TEPxrnH roderick newpassword browsersfgp```. 
+
+This could definitely be improved. To be able to run `docker-compose up` from the project directory and launch a container with the postgres database, and a container that collects fingerprints from BrowserStack (credentials can be supplied as config options) and imports them into the database as requested in the TODOs, we will need to use Docker compose (https://docs.docker.com/compose/) to create containers hosting the different parts of the project. 
 
 ## Results
 

@@ -31,9 +31,6 @@ a- Install version 12.3 postgresql on Ubuntu using: https://www.postgresql.org/d
  
 4- Tried to run Browserstack in a local setting and combine with Wireshark to infer TLS header. Issues while running ```paver run local```. 
 
-5- 
-
-
 
 ## Writeup on design choices
 
@@ -63,14 +60,30 @@ We created 3 tables with the primary keys (PK) and informations below. Table 3 l
  
 ```
 
-2- By running the command,  `curl -u "username:key" https://api.browserstack.com/automate/browsers.json > browsers_infos.json`, we get a list of desired capabilities for both desktop and mobile browsers of Browserstack. The command returns a flat hash in the format [:os, :os_version, :browser, :browser_version, :device, :real_mobile]. We chose to use the outputs to build the HTTPS fingerprints of all available devices. We adopted the following format for HTTPS fingerprints; non available informations are ommitted.
+2- HTTPS fingerprints generation
+
+By running the command,  `curl -u "username:key" https://api.browserstack.com/automate/browsers.json > browsers_infos.json`, we get a list of desired capabilities for both desktop and mobile browsers of Browserstack. The command returns a flat hash in the format [:os, :os_version, :browser, :browser_version, :device, :real_mobile]. We chose to use the outputs to build the HTTPS fingerprints of all available devices. We adopted the following format for HTTPS fingerprints; non available informations are ommitted. As a consequence, our HTTPS fingerprints are basically composed of the uaFingerprints.
 
 ```<browser_name>:<browser_version>:<os_platform>:<os_name>:<os_version>:<device_type>:<quirks>|<tls_version>:<cipher_suites>:<extension_names>:<curves>:<ec_point_fmts>:<http_headers>:<quirks>|<mitm_name>:<mitm_type>:<mitm_grade>```
 
-We store 1864 entries in Table 1.
+We stored 1864 entries in Table 1.
 
 
-3- 
+3- TLS fingerprints generation
+
+As for the TLS request fingerprint string, we adopted the following format (see MITMEngine Github):
+
+```<tls_version>:<cipher_suites>:<extension_names>:<curves>:<ec_point_fmts>:<http_headers>:<quirks>```
+
+We planned to use the selenium and network logs from browserstack to build the TLS fingerprints corresponding to each browser. But none of the fields above were found in those files. Another option was to run browserstack in local testing mode. However, trying that methode led to the following error: 
+
+```
+
+
+
+```
+
+We  thus generated two fingerprints samples locally (On an Ubuntu machine with a firefox browser and a MacOS Mojave with a safari browser) using the commands listed at: https://github.com/cloudflare/mitmengine#generate-a-fingerprint-sample
 
 
 

@@ -11,7 +11,7 @@ a- Install version 12.3 postgresql on Mac using: https://www.robinwieruch.de/pos
 b- Create postgresql database with a table listing the http fingerprints, a table listing the tls fingerprints and a third table storing the matching of their respective ids (run script ). 
  
   
-#### 1- Ubuntu
+#### 1- On Ubuntu
  
 a- Install version 12.3 postgresql on Ubuntu using: https://www.postgresql.org/docs/9.0/tutorial-install.html
   * In case you get the error `createdb: could not connect to database template1: FATAL:  Peer authentication failed for user "postgres"`,  

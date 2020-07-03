@@ -114,25 +114,6 @@ Captured Task Output:
 CONFIG_FILE=config/local.json TASK_ID=0 behave features/local.feature
 
 Build failed running pavement.run: Subprocess return code: 1
-roderick@oberon:~/go/src/github.com/cloudflare/behave-browserstack$ paver run local
----> pavement.run
-CONFIG_FILE=config/local.json TASK_ID=0 behave features/local.feature
-HOOK-ERROR in before_feature: BrowserStackLocalError: Either another browserstack local client is running on your machine or some server is listening on port 45691
-Feature: BrowserStack Local Testing # features/local.feature:1
-HOOK-ERROR in after_feature: AttributeError: 'Context' object has no attribute 'browser'
-
-0 features passed, 1 failed, 0 skipped
-0 scenarios passed, 0 failed, 0 skipped, 1 untested
-0 steps passed, 0 failed, 0 skipped, 0 undefined, 2 untested
-Took 0m0.000s
-
-Captured Task Output:
----------------------
-
----> pavement.run
-CONFIG_FILE=config/local.json TASK_ID=0 behave features/local.feature
-
-Build failed running pavement.run: Subprocess return code: 1
 
 ```
 

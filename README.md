@@ -127,8 +127,10 @@ CONFIG_FILE=config/local.json TASK_ID=0 behave features/local.feature
 Build failed running pavement.run: Subprocess return code: 1
 ```
 
-We thus generated two fingerprints samples locally (On an Ubuntu machine with a firefox browser and a MacOS Mojave with a safari browser) using the commands listed at: https://github.com/cloudflare/mitmengine#generate-a-fingerprint-sample. Assuming that having most of the fields in the UAfingerprints identical means that the HTTPS fingerprint corresponds to the cosidered TLS fingerprint, we looked for the closest match between the existing HTTPS fingerprints and each of the generated TLS fingerprints. We then stored their respective ids in Table 3 (cross_fgp) only if we find such a match. 
+We thus generated two fingerprints samples locally (On an Ubuntu machine with a firefox browser and a MacOS Mojave with a safari browser) using the commands listed at: https://github.com/cloudflare/mitmengine#generate-a-fingerprint-sample. Assuming that having most of the fields in the UAfingerprints identical means that the HTTPS fingerprint corresponds to the cosidered TLS fingerprint, we looked for the closest match between the existing HTTPS fingerprints and each of the generated TLS fingerprints. We then stored their respective ids in Table 3 (cross_fgp) only if we find such a match. The current status of the database id presented in the next section. 
 
+
+4- On using Docker Compose. As of now the code is fully automated in python with the option to run it using the command ./docker-compose.py up browserstack-username browserstack-key```. This could be improved. To be able to run `docker-compose up` from the project directory and launch a container with the postgres database, and a container that collects fingerprints from BrowserStack (credentials can be supplied as config options) and imports them into the database as requested in the TODOs, we will need to use Docker compose (https://docs.docker.com/compose/) to create containers hosting the different parts of the project. 
 
 ## Results
 

@@ -1,0 +1,24 @@
+
+2- Fetch credentials for database
+
+3- Build HTTPS fingerprints
+curl -u  'fanouroderick1:sxuyw68wEHXq9TEPxrnH' https://api.browserstack.com/automate/browsers.json > browsers_infos.json
+(1864, 'Record inserted successfully into table')
+
+4- Fetch inserted HTTPS fingerprints
+
+5- Fetch TLS fingerprints
+safari:13.1.1:desktop:OSX:Mojave:10.14.5|TLSv1.3:TLS_AES_256_GCM_SHA384:::::RSA-PSS|::
+(1, 'Record inserted successfully into table tls_fgp')
+RESULT Match_id 1591 ['safari:12.1:desktop:OSX:Mojave:None:', '::::::', '::'] ['safari:13.1.1:desktop:OSX:Mojave:10.14.5', 'TLSv1.3:TLS_AES_256_GCM_SHA384:::::RSA-PSS', '::']
+(1, 'Record inserted successfully into table cross_fgp')
+firefox::desktop:Linux:Oberon:4.15.0|TLSv1.3:TLS_AES_256_GCM_SHA384:::::RSA-PSS|::
+(1, 'Record inserted successfully into table tls_fgp')
+RESULT Match_id 0  ['firefox::desktop:Linux:Oberon:4.15.0', 'TLSv1.3:TLS_AES_256_GCM_SHA384:::::RSA-PSS', '::']
+
+6- list TLS fingerprints 
+Generated TLS fingerprints =  [(1, 'safari:13.1.1:desktop:OSX:Mojave:10.14.5|TLSv1.3:TLS_AES_256_GCM_SHA384:::::RSA-PSS|::'), (2, 'firefox::desktop:Linux:Oberon:4.15.0|TLSv1.3:TLS_AES_256_GCM_SHA384:::::RSA-PSS|::')]
+
+7- Matches
+Matches =  [(1591, 1)]
+PostgreSQL connection is closed

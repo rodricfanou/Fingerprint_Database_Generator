@@ -66,7 +66,7 @@ By running the command,  `curl -u "username:key" https://api.browserstack.com/au
 
 ```<browser_name>:<browser_version>:<os_platform>:<os_name>:<os_version>:<device_type>:<quirks>|<tls_version>:<cipher_suites>:<extension_names>:<curves>:<ec_point_fmts>:<http_headers>:<quirks>|<mitm_name>:<mitm_type>:<mitm_grade>```
 
-We stored 1864 entries in Table 1.
+We stored 1,864 entries in Table 1.
 
 
 3- TLS fingerprints generation
@@ -75,11 +75,64 @@ As for the TLS request fingerprint string, we adopted the following format (see 
 
 ```<tls_version>:<cipher_suites>:<extension_names>:<curves>:<ec_point_fmts>:<http_headers>:<quirks>```
 
-We planned to use the selenium and network logs from browserstack to build the TLS fingerprints corresponding to each browser. But none of the fields above were found in those files. Another option was to run browserstack in local testing mode. However, trying that methode led to the following error: 
+We planned to use the selenium and network logs from browserstack to build the TLS fingerprints corresponding to each of the 1,864 browsers' HTTPS fingerprints. But none of the fields above were found in those files. The second option was to run browserstack in local testing mode, while launching traffic capture with wireshark. Trying that method led to the following: 
 
 ```
+./BrowserStackLocal --key sxuyw68wEHXq9TEPxrnH --force-local
+Thu Jul 02 2020 13:01:50 GMT-0700 (PDT) -- BrowserStackLocal v8.0
 
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Thu Jul 02 2020 13:01:51 GMT-0700 (PDT) -- Starting configuration console on http://localhost:45454
+Thu Jul 02 2020 13:01:51 GMT-0700 (PDT) -- [INFO] Started the BrowserStack Binary server on 45691, PID: 12357
+Thu Jul 02 2020 13:01:52 GMT-0700 (PDT) -- [SUCCESS] You can now access your local server(s) in our remote browser
 
+Thu Jul 02 2020 13:01:52 GMT-0700 (PDT) -- Press Ctrl-C to exit
+```
+
+And we obtained the following error:
+
+```
+~/go/src/github.com/cloudflare/behave-browserstack$ paver run local
+---> pavement.run
+CONFIG_FILE=config/local.json TASK_ID=0 behave features/local.feature
+HOOK-ERROR in before_feature: BrowserStackLocalError: Either another browserstack local client is running on your machine or some server is listening on port 45690
+Feature: BrowserStack Local Testing # features/local.feature:1
+HOOK-ERROR in after_feature: AttributeError: 'Context' object has no attribute 'browser'
+
+0 features passed, 1 failed, 0 skipped
+0 scenarios passed, 0 failed, 0 skipped, 1 untested
+0 steps passed, 0 failed, 0 skipped, 0 undefined, 2 untested
+Took 0m0.000s
+
+Captured Task Output:
+---------------------
+
+---> pavement.run
+CONFIG_FILE=config/local.json TASK_ID=0 behave features/local.feature
+
+Build failed running pavement.run: Subprocess return code: 1
+roderick@oberon:~/go/src/github.com/cloudflare/behave-browserstack$ paver run local
+---> pavement.run
+CONFIG_FILE=config/local.json TASK_ID=0 behave features/local.feature
+HOOK-ERROR in before_feature: BrowserStackLocalError: Either another browserstack local client is running on your machine or some server is listening on port 45691
+Feature: BrowserStack Local Testing # features/local.feature:1
+HOOK-ERROR in after_feature: AttributeError: 'Context' object has no attribute 'browser'
+
+0 features passed, 1 failed, 0 skipped
+0 scenarios passed, 0 failed, 0 skipped, 1 untested
+0 steps passed, 0 failed, 0 skipped, 0 undefined, 2 untested
+Took 0m0.000s
+
+Captured Task Output:
+---------------------
+
+---> pavement.run
+CONFIG_FILE=config/local.json TASK_ID=0 behave features/local.feature
+
+Build failed running pavement.run: Subprocess return code: 1
 
 ```
 

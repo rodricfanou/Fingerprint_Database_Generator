@@ -2,7 +2,7 @@
 The MITMEngine project (https://github.com/cloudflare/mitmengine) detects HTTPS interception and user agent spoofing by checking if the TLS fingerprint of an incoming connection corresponds to the expected fingerprint for the connection’s user agent. MITMEngine powers the MALCOLM dashboard (https://malcolm.cloudflare.com). The goal of this project is to use BrowserStack to generate TLS client hello fingerprints and user agents for a selection of recent browsers and store them in a Postgres database.
 
 
-## Steps
+## Configuration Steps
 
 #### 1- On MacOS Mojave 
 
@@ -19,8 +19,10 @@ a- Install version 12.3 postgresql on Ubuntu using: https://www.postgresql.org/d
      * replace `local   all             postgres                                peer` by `local   all             postgres                                trust`
      * `sudo /etc/init.d/postgresql reload 
 
+
 2- Create an account on BrowserStack (a free account would be enough for this project); automate browserstack for python using https://www.browserstack.com/automate/python. 
   * install behave-browserstack (https://github.com/browserstack/behave-browserstack.git) -- not sure this is compulsory
+  
   
 3- Download and install mitmengine (Not necessary for the project) 
   * setup Go (https://golang.org/dl/go1.14.4.linux-amd64.tar.gz) using https://golang.org/doc/install
@@ -29,7 +31,14 @@ a- Install version 12.3 postgresql on Ubuntu using: https://www.postgresql.org/d
   * set GOPATH to /home/username/go/
   * run ``make test`` and ``make cover`` in ```/home/username/go/src/github.com/cloudflare/mitmengine```
  
-4- Tried to run Browserstack in a local setting and combine with Wireshark to infer TLS header. Issues while running ```paver run local```. 
+ 
+4- Generate TLS fingerprints
+  * Run Browserstack in a local setting and combine with Wireshark to infer TLS header: issues while running ```paver run local```. 
+  * Generate TLS fingerprints samples using https://github.com/cloudflare/mitmengine#generate-a-fingerprint-sample
+  
+  
+5- 
+
 
 
 ## Writeup on design choices
@@ -38,21 +47,21 @@ a- Install version 12.3 postgresql on Ubuntu using: https://www.postgresql.org/d
 We created 3 tables with the primary keys (PK) and informations below. Table 3 links the HTTPS fingerprints to the TLS fingerprints using their respective IDs (http_is and tls_id). 
 
 ```
-          Table1: "http_fgp"
+          Table 1: "http_fgp"
   Column   |     Type      | Modifiers
 -----------+---------------+-----------
  http_id   | integer (PF)  | not null
  http_fgp  | character(500) |
 
 
-          Table2: "tls_fgp"
+          Table 2: "tls_fgp"
   Column   |     Type      | Modifiers
 -----------+---------------+-----------
  tls_id   | integer (PF)   | not null
  tls_fgp  | character(500) | 
 
 
-                Table3: "cross_fgp"
+                Table 3: "cross_fgp"
   Column   |     Type                   | Modifiers
 -----------+----------------------------+-----------
  http_id   | integer (FK from Table 1)  | not null
@@ -116,7 +125,7 @@ CONFIG_FILE=config/local.json TASK_ID=0 behave features/local.feature
 Build failed running pavement.run: Subprocess return code: 1
 ```
 
-We  thus generated two fingerprints samples locally (On an Ubuntu machine with a firefox browser and a MacOS Mojave with a safari browser) using the commands listed at: https://github.com/cloudflare/mitmengine#generate-a-fingerprint-sample
+We thus generated two fingerprints samples locally (On an Ubuntu machine with a firefox browser and a MacOS Mojave with a safari browser) using the commands listed at: https://github.com/cloudflare/mitmengine#generate-a-fingerprint-sample
 
 
 

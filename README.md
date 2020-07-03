@@ -19,7 +19,6 @@ a- Install version 12.3 postgresql on Ubuntu using: https://www.postgresql.org/d
      * replace `local   all             postgres                                peer` by `local   all             postgres                                trust`
      * `sudo /etc/init.d/postgresql reload 
 
-
 2- Create an account on BrowserStack (a free account would be enough for this project); automate browserstack for python using https://www.browserstack.com/automate/python. 
   * install behave-browserstack (https://github.com/browserstack/behave-browserstack.git) -- not sure this is compulsory
   
@@ -30,12 +29,9 @@ a- Install version 12.3 postgresql on Ubuntu using: https://www.postgresql.org/d
   * set GOPATH to /home/username/go/
   * run ``make test`` and ``make cover`` in ```/home/username/go/src/github.com/cloudflare/mitmengine```
  
-4- HTTPS vs TLS signatures
+4- Tried to run Browserstack in a local setting and combine with Wireshark to infer TLS header. Issues while running ```paver run local```. 
 
-
-
-* 
-
+5- 
 
 
 

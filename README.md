@@ -38,7 +38,8 @@ a- Install version 12.3 postgresql on Ubuntu using: https://www.postgresql.org/d
 ## Writeup on design choices
 
 1- Design of the Postgresql database.
-
+We created 3 tables with the primery keys and informations below. Table 3 links the HTTPS fingerprints to the TLS fingerprints using their respective IDs. 
+```
           Table1: "http_fgps"
   Column   |     Type      | Modifiers
 -----------+---------------+-----------
@@ -52,13 +53,14 @@ a- Install version 12.3 postgresql on Ubuntu using: https://www.postgresql.org/d
  tls_id   | integer (PF)   | not null
  tls_fgp  | character(500) | not null
 
-```
+
                 Table3: "cross_fgps"
   Column   |     Type                   | Modifiers
 -----------+----------------------------+-----------
  http_id   | integer (FK from Table 1)  | not null
  tls_id    | integer (FK from Table 2)  | not null
  
+```
 
 
 2- By running the command,  `curl -u "username:key" https://api.browserstack.com/automate/browsers.json > browsers_infos.json`, we get a list of desired capabilities for both desktop and mobile browsers. It returns a flat hash in the format [:os, :os_version, :browser, :browser_version, :device, :real_mobile].

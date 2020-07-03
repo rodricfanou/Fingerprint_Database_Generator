@@ -125,7 +125,7 @@ CONFIG_FILE=config/local.json TASK_ID=0 behave features/local.feature
 Build failed running pavement.run: Subprocess return code: 1
 ```
 
-We thus generated two fingerprints samples locally (On an Ubuntu machine with a firefox browser and a MacOS Mojave with a safari browser) using the commands listed at: https://github.com/cloudflare/mitmengine#generate-a-fingerprint-sample. We looked for the closest match among the existing HTTPS fingerprints and store the match in Table 3 only if we find such a match. 
+We thus generated two fingerprints samples locally (On an Ubuntu machine with a firefox browser and a MacOS Mojave with a safari browser) using the commands listed at: https://github.com/cloudflare/mitmengine#generate-a-fingerprint-sample. Assuming that having most of the fields in the UAfingerprints which are identical means that the HTTPS fingerprint corresponds to the cosidered TLS fingerprint, we looked for the closest match between the existing HTTPS fingerprints and each of the generated TLS fingerprints and stored ther respective ids in Table 3 (cross_fgp) only if we find such a match. 
 
 
 

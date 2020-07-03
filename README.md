@@ -52,7 +52,7 @@ a- Install version 12.3 postgresql on Ubuntu using: https://www.postgresql.org/d
  tls_id   | integer (PF)   | not null
  tls_fgp  | character(500) | not null
 
-
+```
                 Table3: "cross_fgps"
   Column   |     Type                   | Modifiers
 -----------+----------------------------+-----------

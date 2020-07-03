@@ -39,6 +39,26 @@ a- Install version 12.3 postgresql on Ubuntu using: https://www.postgresql.org/d
 
 1- Design of the Postgresql database.
 
+          Table1: "http_fgps"
+  Column   |     Type      | Modifiers
+-----------+---------------+-----------
+ http_id   | integer (PF)  | not null
+ http_fgp  | character(500) | not null
+
+
+          Table2: "tls_fgps"
+  Column   |     Type      | Modifiers
+-----------+---------------+-----------
+ tls_id   | integer (PF)   | not null
+ tls_fgp  | character(500) | not null
+
+
+                Table3: "cross_fgps"
+  Column   |     Type                   | Modifiers
+-----------+----------------------------+-----------
+ http_id   | integer (FK from Table 1)  | not null
+ tls_id    | integer (FK from Table 2)  | not null
+ 
 
 
 2- By running the command,  `curl -u "username:key" https://api.browserstack.com/automate/browsers.json > browsers_infos.json`, we get a list of desired capabilities for both desktop and mobile browsers. It returns a flat hash in the format [:os, :os_version, :browser, :browser_version, :device, :real_mobile].

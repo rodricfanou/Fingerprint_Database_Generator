@@ -20,15 +20,11 @@ sudo -u postgres createuser "$userimp"
 
 ALTER USER "$userimp" with password '"$passimp"';
 
-#createdb -h localhost -p 5432 -U postgres -W ‘new-password’ browsersfgp
-
 createdb -h localhost -p 5432 -U "$userimp"  -W `"$passimp"` "$db" 
-#createdb -U postgres(db user) dbname
 
 ## HTTP fingerprints table
 psql  -d browsersfgp -c """CREATE TABLE IF NOT EXISTS http_fgp (http_id INT NOT NULL, http_fgp VARCHAR(500) NOT NULL, PRIMARY KEY (http_id));"""
 ## Add infos about the browser?
-
 
 ## TLS fingerprints table
 psql  -d browsersfgp -c """CREATE TABLE IF NOT EXISTS tls_fgp (tls_id INT NOT NULL, tls_fgp VARCHAR(500) NOT NULL, PRIMARY KEY (tls_id));"""
